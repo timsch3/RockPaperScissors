@@ -73,10 +73,10 @@ input[type='submit']:active {
         border-radius: 10px;
         margin: 20px 0;
         }
-        .button:not(:last-of-type) {
+        .gameButton:not(:last-of-type) {
             margin-right: 20px;
         }
-        .button:hover {
+        .gameButton:hover {
             transform: scale(1.1);
         }
         #rockButton {
