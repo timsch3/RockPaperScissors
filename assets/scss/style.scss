@@ -14,18 +14,7 @@
 }
 body {
     font-family: OpenSans, sans-serif;
-}
-.center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.emFont {
-    font-family: BlueberryCupcake;
-    font-size: 3rem;
-    vertical-align: middle;
-    letter-spacing: 1.5px;
-    font-weight: 400;
+    font-size: 1.2rem;
 }
 h1 {
     padding: 20px 0 40px 0;
@@ -33,11 +22,31 @@ h1 {
         padding-left: 15px;
     }
 }
-//---------------------------------------- Rounds option window
-#roundsOption {
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    padding: 20px;
     border: 1px solid #000;
     border-radius: 3px;
-    padding: 20px;
+}
+.emFont {
+    font-family: BlueberryCupcake;
+    font-size: 4rem;
+    vertical-align: middle;
+    letter-spacing: 1.5px;
+    font-weight: 400;
+}
+a {
+    color: #00c
+}
+a:hover {
+    color: #000
+}
+//---------------------------------------- Rounds option window
+#roundsOption {
 
     #roundsInput {
         width: 90%
@@ -45,23 +54,34 @@ h1 {
     #startButton {
         margin-top: 20px;
         font-size: 2rem;
+        padding: 5px 15px;
+        border: outset;
+        border-radius: 5px;
+    }
+    #startButton:active {
+        border: inset;
     }
 }
 //---------------------------------------- Game window
 #gameWindow {
     display: none;
-
+    width: 560px;
     #buttonsContainer {
         display: flex;
-        border: 1px solid #000;
-        border-radius: 3px;
-
+        justify-content: center;
+//------------------------------ Buttons
         .button {
         width: 100px;
         height: 100px;
         border: 3px solid #000;
         border-radius: 10px;
-        margin: 20px;
+        margin: 20px 0;
+        }
+        .button:not(:last-of-type) {
+            margin-right: 20px;
+        }
+        .button:hover {
+            transform: scale(1.1);
         }
         #rockButton {
             background: url(../img/rock.png) center/cover no-repeat;
@@ -73,8 +93,59 @@ h1 {
             background: url(../img/scissors.png) center/cover no-repeat;
         }
     }
+    //------------------------------ Actions
+    #actionsContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        overflow-x: hidden;
+        #playerAction {
+            width: 270px;
+            height: 270px;
+            background: url(../img/rock.png) center/cover no-repeat;
+            transform: rotate(90deg) rotateY(180deg);
+            position: relative;
+            left: -280px;
+            transition: 0.2s;
+            border-bottom: 10px solid #fff;
+        }
+        #computerAction {
+            width: 270px;
+            height: 270px;
+            background: url(../img/rock.png) center/cover no-repeat;
+            transform: rotate(-90deg);
+            position: relative;
+            right: -280px;
+            transition: 0.2s;
+            border-bottom: 10px solid #fff;
+        }
+    }
+//------------------------------ Current round and score
+    #currentRoundOutput {
+        font-size: 1rem;
+        letter-spacing: -1px;
+    }
+    #scoreOutput {
+        font-size: 3rem;
+    }
 }
+//---------------------------------------- Finished / restart message
+#finishedMessages {
+    display: none;
+    text-align: center;
+}
+#finishedMessage, #finishedMessage3 {
+    font-size: 1.5rem;
+}
+#finishedMessage2 {
+   font-family: BlueberryCupcake;
+   font-size: 5rem;
+   line-height: 8rem;
+   letter-spacing: 3px;
+}
+
 //---------------------------------------- Icons attribution
 #iconsAttribution {
+    font-size: 0.75rem;
     padding-top: 100px;
 }
