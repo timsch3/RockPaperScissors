@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="center">
+    <h1>Play<span class="emFont">Rock Paper Scissors</span></h1>
+    <!-- ---------------------------------------- Rounds option window -->
+    <div id="roundsOption" class="center">
+        <label for="roundsInput">Choose how many rounds you want to play:</label><br>
+        <input type="range" list="tickmarks" min="1" max="20" value="3" id="roundsInput"
+            oninput="displayChosenRounds()"><br>
+        <p class="emFont" id="roundsOutput">3</p>
+        <input type="button" value="Go!" id="startButton" onclick="startGame()">
+    </div>
+    <!-- ---------------------------------------- Game window -->
+    <div id="gameWindow" class="center">
+        <div id="buttonsContainer">
+            <p>Click on a button to make a move</p><br>
+            <div id="rockButton" class="button"></div>
+            <div id="paperButton" class="button"></div>
+            <div id="scissorsButton" class="button"></div>
+        </div>
+        <div id="actionsContainer">
+            <div id="playerAction"></div>
+            <div id="computerAction"></div>
+        </div>
+    </div>
+    <!-- ---------------------------------------- Icons attribution -->
+    <div id="iconsAttribution">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a
+            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
