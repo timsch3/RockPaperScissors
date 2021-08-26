@@ -11,40 +11,43 @@
 </head>
 
 <body class="center" onload="displayChosenRounds()">
-    <h1>Play<span class="emFont">Rock Paper Scissors</span></h1>
-    <!-- ---------------------------------------- Rounds option window -->
-    <div id="roundsOption" class="center container">
-        <label for="roundsInput">Choose how many rounds you want to play:</label><br>
-        <input type="range" list="tickmarks" min="1" max="20" value="5" id="roundsInput"
-            oninput="displayChosenRounds()"><br>
-        <p class="emFont" id="roundsOutput">5</p>
-        <input type="button" value="Go!" id="startButton" onclick="startGame()">
-    </div>
-    <!-- ---------------------------------------- Game window -->
-    <div id="gameWindow" class="center container">
-        <p>Click on a button to make a move:</p>
-        <div id="buttonsContainer">
-            <div id="rockButton" class="button" onclick="playerAction(this)"></div>
-            <div id="paperButton" class="button" onclick="playerAction(this)"></div>
-            <div id="scissorsButton" class="button" onclick="playerAction(this)"></div>
+    <div id="topContainer">
+        <h1>Play<span class="emFont">Rock Paper Scissors</span></h1>
+        <!-- ---------------------------------------- Rounds option window -->
+        <div id="roundsOption" class="center">
+            <label for="roundsInput">Choose how many rounds you want to play:</label><br>
+            <input type="range" list="tickmarks" min="1" max="20" value="5" id="roundsInput"
+                oninput="displayChosenRounds()"><br>
+            <p class="emFont" id="roundsOutput">5</p>
+            <input type="submit" value="Go!" id="startButton" onclick="startGame()">
         </div>
-        <div id="actionsContainer">
-            <div id="playerAction"></div>
-            <div id="computerAction"></div>
+        <!-- ---------------------------------------- Game window -->
+        <div id="gameWindow" class="center">
+            <p>Click on a button to make a move:</p>
+            <div id="buttonsContainer">
+                <div id="rockButton" class="gameButton" onclick="playerAction(this)"></div>
+                <div id="paperButton" class="gameButton" onclick="playerAction(this)"></div>
+                <div id="scissorsButton" class="gameButton" onclick="playerAction(this)"></div>
+            </div>
+            <div id="actionsContainer">
+                <div id="playerAction"></div>
+                <div id="computerAction"></div>
+            </div>
+            <p id="scoreOutput" class="emFont">0 : 0</p>
+            <p id="currentRoundOutput">Round 1 / </p>
         </div>
-        <p id="scoreOutput" class="emFont">0 : 0</p>
-        <p id="currentRoundOutput">Round 1 / </p>
-    </div>
-    <!-- ---------------------------------------- Finished / restart message -->
-    <div id="finishedMessages" class="center container">
-        <p id="finishedMessage"></p>
-        <p id="finishedMessage2"></p>
-        <p id="finishedMessage3"></p>
+        <!-- ---------------------------------------- Finished / restart message -->
+        <div id="finishedMessages" class="center">
+            <p id="finishedMessage"></p>
+            <p id="finishedMessage2"></p>
+            <p id="finishedMessage3"></p>
+        </div>
     </div>
     <!-- ---------------------------------------- Icons attribution -->
     <div id="iconsAttribution">Icons made by <a href="https://www.freepik.com" title="Freepik"
             target="_blank">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"
-            target="_blank">www.flaticon.com</a></div>
+            target="_blank">www.flaticon.com</a>
+    </div>
     <script src="assets/js/main.js"></script>
 </body>
 

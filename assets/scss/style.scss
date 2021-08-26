@@ -12,25 +12,22 @@
     padding: 0;
     margin: 0;
 }
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 body {
     font-family: OpenSans, sans-serif;
     font-size: 1.2rem;
+    height: 100vh;
+    justify-content: space-between;
 }
 h1 {
     padding: 20px 0 40px 0;
     span {
         padding-left: 15px;
     }
-}
-.center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.container {
-    padding: 20px;
-    border: 1px solid #000;
-    border-radius: 3px;
 }
 .emFont {
     font-family: BlueberryCupcake;
@@ -51,14 +48,14 @@ a:hover {
 #roundsInput {
     width: 90%
 }
-#startButton {
+input[type='submit'] {
     margin-top: 20px;
     font-size: 2rem;
     padding: 5px 15px;
     border: outset;
     border-radius: 5px;
 }
-#startButton:active {
+input[type='submit']:active {
     border: inset;
 }
 //---------------------------------------- Game window
@@ -69,7 +66,7 @@ a:hover {
         display: flex;
         justify-content: center;
 //------------------------------ Buttons
-        .button {
+        .gameButton {
         width: 100px;
         height: 100px;
         border: 3px solid #000;
@@ -144,5 +141,5 @@ a:hover {
 #iconsAttribution {
     display: none;
     font-size: 0.75rem;
-    padding-top: 100px;
+    padding: 80px 0 10px 0;
 }

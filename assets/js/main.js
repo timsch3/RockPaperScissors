@@ -113,7 +113,7 @@ function reset() {
     // Refresh current round output
     currentRound++
     currentRoundOutputElt.innerHTML = `Round ${currentRound} / ${rounds}`
-    // Check if game is finished and display according message if so
+    // Check if game is finished and display according messages if so
     if (currentRound > rounds) {
         document.getElementById('gameWindow').style.display = 'none'
         document.getElementById('iconsAttribution').style.display = 'none'
@@ -122,11 +122,16 @@ function reset() {
         let msg2 = document.getElementById('finishedMessage2')
         let msg3 = document.getElementById('finishedMessage3')
         messages.style.display = 'block'
-        msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;rounds and`
-        msg3.innerHTML = `against the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}<br><br><br><a href="index.html">Play again</a></strong>`
+        if (rounds == 1) { // Check if only one round was played ("round" / "rounds")
+            msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;round and`
+        }
+        else {
+            msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;rounds and`
+        }
+        msg3.innerHTML = `against the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}</strong><br><br><br><form action="index.html"><input type="submit" value="Play again!"></form>`
         if (score[0] == score[1]) {
             msg2.innerHTML = 'tied'
-            msg3.innerHTML = `with the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}<br><br><br><a href="index.html">Play again</a></strong>`
+            msg3.innerHTML = `with the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}</strong><br><br><br><form action="index.html"><input type="submit" value="Play again!"></form>`
         }
         else if (score[0] < score[1]) {
             msg2.innerHTML = 'lost'
