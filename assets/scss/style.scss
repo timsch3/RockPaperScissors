@@ -4,7 +4,7 @@
 }
 @font-face {
     font-family: OpenSans;
-    src: url(../fonts/OpenSans-Regular.ttf);
+    src: url(../fonts/OpenSans-Light.ttf);
 }
 
 //---------------------------------------- CSS Reset & general styles
@@ -40,27 +40,26 @@ h1 {
     font-weight: 400;
 }
 a {
+    text-decoration: none;
     color: #00c
 }
 a:hover {
+    text-decoration: underline;
     color: #000
 }
 //---------------------------------------- Rounds option window
-#roundsOption {
-
-    #roundsInput {
-        width: 90%
-    }
-    #startButton {
-        margin-top: 20px;
-        font-size: 2rem;
-        padding: 5px 15px;
-        border: outset;
-        border-radius: 5px;
-    }
-    #startButton:active {
-        border: inset;
-    }
+#roundsInput {
+    width: 90%
+}
+#startButton {
+    margin-top: 20px;
+    font-size: 2rem;
+    padding: 5px 15px;
+    border: outset;
+    border-radius: 5px;
+}
+#startButton:active {
+    border: inset;
 }
 //---------------------------------------- Game window
 #gameWindow {
@@ -102,7 +101,6 @@ a:hover {
         #playerAction {
             width: 270px;
             height: 270px;
-            background: url(../img/rock.png) center/cover no-repeat;
             transform: rotate(90deg) rotateY(180deg);
             position: relative;
             left: -280px;
@@ -112,7 +110,6 @@ a:hover {
         #computerAction {
             width: 270px;
             height: 270px;
-            background: url(../img/rock.png) center/cover no-repeat;
             transform: rotate(-90deg);
             position: relative;
             right: -280px;
@@ -120,10 +117,10 @@ a:hover {
             border-bottom: 10px solid #fff;
         }
     }
-//------------------------------ Current round and score
+//------------------------------ Score and current round output
     #currentRoundOutput {
         font-size: 1rem;
-        letter-spacing: -1px;
+        letter-spacing: -0.5px;
     }
     #scoreOutput {
         font-size: 3rem;
@@ -143,9 +140,9 @@ a:hover {
    line-height: 8rem;
    letter-spacing: 3px;
 }
-
 //---------------------------------------- Icons attribution
 #iconsAttribution {
+    display: none;
     font-size: 0.75rem;
     padding-top: 100px;
 }

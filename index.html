@@ -14,9 +14,9 @@
     <!-- ---------------------------------------- Rounds option window -->
     <div id="roundsOption" class="center container">
         <label for="roundsInput">Choose how many rounds you want to play:</label><br>
-        <input type="range" list="tickmarks" min="1" max="20" value="3" id="roundsInput"
+        <input type="range" list="tickmarks" min="1" max="20" value="5" id="roundsInput"
             oninput="displayChosenRounds()"><br>
-        <p class="emFont" id="roundsOutput">3</p>
+        <p class="emFont" id="roundsOutput">5</p>
         <input type="button" value="Go!" id="startButton" onclick="startGame()">
     </div>
     <!-- ---------------------------------------- Game window -->
@@ -32,7 +32,7 @@
             <div id="computerAction"></div>
         </div>
         <p id="scoreOutput" class="emFont">0 : 0</p>
-        <p id="currentRoundOutput">Round 1 of </p>
+        <p id="currentRoundOutput">Round 1 / </p>
     </div>
     <!-- ---------------------------------------- Finished / restart message -->
     <div id="finishedMessages" class="center container">
