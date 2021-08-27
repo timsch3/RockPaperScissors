@@ -4,6 +4,7 @@ let score = [0, 0]
 let currentRoundOutputElt = document.getElementById('currentRoundOutput')
 let scoreOutputElt = document.getElementById('scoreOutput')
 let winner // 0 = draw  1 = player wins  2 = computer wins
+let actionsContainer = document.getElementById('actionsContainer')
 let playerActionElt = document.getElementById('playerAction')
 let computerActionElt = document.getElementById('computerAction')
 let alreadyClicked = false
@@ -89,15 +90,15 @@ function playerAction(elt) {
 }
 function colorize() {
     if (winner == 1) {
-        playerActionElt.style.borderBottom = '10px solid #0c0'
-        computerActionElt.style.borderBottom = '10px solid #c00'
+        actionsContainer.style.borderLeft = '10px solid #0c0'
+        actionsContainer.style.borderRight = '10px solid #c00'
     }
     else if (winner == 2) {
-        playerActionElt.style.borderBottom = '10px solid #c00'
-        computerActionElt.style.borderBottom = '10px solid #0c0'
+        actionsContainer.style.borderLeft = '10px solid #c00'
+        actionsContainer.style.borderRight = '10px solid #0c0'
     }
     else {
-        playerActionElt.style.borderBottom = computerActionElt.style.borderBottom = '10px solid #00c'
+        actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #00c'
     }
     // Score output: score[player, computer]
     if (winner == 1) {
@@ -143,7 +144,7 @@ function reset() {
     // Reset everything for the next round
     computerActionElt.style.right = '-280px'
     playerActionElt.style.left = '-280px'
-    playerActionElt.style.borderBottom = computerActionElt.style.borderBottom = '10px solid #fff'
+    actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #000'
     winner = null
     playerChoice = null
     computerChoice = null
