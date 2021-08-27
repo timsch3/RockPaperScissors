@@ -49,6 +49,7 @@ a:hover {
     width: 90%
 }
 input[type='submit'] {
+    font-family: BlueberryCupcake;
     margin-top: 20px;
     font-size: 2rem;
     padding: 5px 15px;
@@ -95,29 +96,28 @@ input[type='submit']:active {
         justify-content: center;
         width: 100%;
         overflow-x: hidden;
-        #playerAction {
-            width: 270px;
-            height: 270px;
-            transform: rotate(90deg) rotateY(180deg);
+        border-right: 10px solid #000;
+        border-left: 10px solid #000;
+        .action {
+            width: 280px;
+            height: 280px;            
             position: relative;
-            left: -280px;
             transition: 0.2s;
-            border-bottom: 10px solid #fff;
+        }
+        #playerAction {
+            transform: rotate(90deg) rotateY(180deg);
+            left: -280px;
         }
         #computerAction {
-            width: 270px;
-            height: 270px;
             transform: rotate(-90deg);
-            position: relative;
             right: -280px;
-            transition: 0.2s;
-            border-bottom: 10px solid #fff;
         }
     }
 //------------------------------ Score and current round output
     #currentRoundOutput {
         font-size: 1rem;
         letter-spacing: -0.5px;
+        font-weight: bold;
     }
     #scoreOutput {
         font-size: 3rem;
