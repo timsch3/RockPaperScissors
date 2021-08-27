@@ -24,10 +24,12 @@ body {
     justify-content: space-between;
 }
 h1 {
-    padding: 20px 0 40px 0;
     span {
         padding-left: 15px;
     }
+}
+label {
+    padding-top: 40px;
 }
 .emFont {
     font-family: BlueberryCupcake;
@@ -62,34 +64,39 @@ input[type='submit']:active {
 //---------------------------------------- Game window
 #gameWindow {
     display: none;
-    width: 560px;
-    #buttonsContainer {
+    width: 555px;
+    //------------------------------ Score, current round and text output
+    #currentRoundOutput {
+        font-size: 1rem;
+        letter-spacing: -0.5px;
+        font-weight: bold;
+        transform: translateY(30px);
+    }
+    #scoreOutput {
+        font-size: 3rem;
+        transition: 0.5s;
+        transform: translateY(35px);
+    }
+    #actionTexts {
         display: flex;
-        justify-content: center;
-//------------------------------ Buttons
-        .gameButton {
-        width: 100px;
-        height: 100px;
-        border: 3px solid #000;
-        border-radius: 10px;
-        margin: 20px 0;
-        transition: 0.05s;
-        }
-        .gameButton:not(:last-of-type) {
-            margin-right: 20px;
-        }
-        .gameButton:hover {
-            transform: scale(1.1);
-        }
-        #rockButton {
-            background: url(../img/rock.png) center/cover no-repeat;
-        }
-        #paperButton {
-            background: url(../img/paper.png) center/cover no-repeat;
-        }
-        #scissorsButton {
-            background: url(../img/scissors.png) center/cover no-repeat;
-        }
+        justify-content: space-between;
+        width: 98%;
+        transform: translateY(52px);
+        position: relative;
+        z-index: 10;
+    }
+    .actionText {
+        font-size: 1rem;
+        letter-spacing: -0.75px;
+        font-weight: bold;
+        color: #00000099
+    }
+    #actionTextDraw {
+        color: #fff;
+        font-family: BlueberryCupcake;
+        font-size: 3rem;
+        letter-spacing: 3px;
+        font-weight: 500;
     }
     //------------------------------ Actions
     #actionsContainer {
@@ -114,41 +121,40 @@ input[type='submit']:active {
             right: -280px;
         }
     }
-//------------------------------ Score and current round output
-    #currentRoundOutput {
-        font-size: 1rem;
-        letter-spacing: -0.5px;
-        font-weight: bold;
-    }
-    #scoreOutput {
-        font-size: 3rem;
-        transition: 0.5s;
-    }
-    #actionTexts {
+    #buttonsContainer {
         display: flex;
-        justify-content: space-between;
-        width: 98%;
-        transform: translateY(52px);
-        position: relative;
-        z-index: 10;
-    }
-    .actionText {
-        font-size: 1rem;
-        letter-spacing: -0.75px;
-        font-weight: bold;
-    }
-    #actionTextDraw {
-        color: #fff;
-        font-family: BlueberryCupcake;
-        font-size: 3rem;
-        letter-spacing: 3px;
-        font-weight: 500;
+        justify-content: center;
+    //------------------------------ Buttons
+    .gameButton {
+        width: 80px;
+        height: 80px;
+        border: 3px solid #000;
+        border-radius: 10px;
+        margin-top: 20px;
+        transition: 0.05s;
+        }
+        .gameButton:not(:last-of-type) {
+            margin-right: 20px;
+        }
+        .gameButton:hover {
+            transform: scale(1.1);
+        }
+        #rockButton {
+            background: url(../img/rock.png) center/cover no-repeat;
+        }
+        #paperButton {
+            background: url(../img/paper.png) center/cover no-repeat;
+        }
+        #scissorsButton {
+            background: url(../img/scissors.png) center/cover no-repeat;
+        }
     }
 }
 //---------------------------------------- Finished / restart message
 #finishedMessages {
     display: none;
     text-align: center;
+    padding-top: 40px;
 }
 #finishedMessage, #finishedMessage3 {
     font-size: 1.5rem;
@@ -163,5 +169,5 @@ input[type='submit']:active {
 #iconsAttribution {
     display: none;
     font-size: 0.75rem;
-    padding: 80px 0 10px 0;
+    padding-bottom: 3px;
 }

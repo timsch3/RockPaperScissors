@@ -93,13 +93,13 @@ function playerAction(elt) {
         if (winner == 1) {
             actionsContainer.style.borderLeft = '10px solid #0c0'
             actionsContainer.style.borderRight = '10px solid #c00'
-            scoreOutputElt.style.transform = 'scaleX(1.25)'
+            scoreOutputElt.style.transform = 'translateY(35px) scaleX(1.25)'
             playerActionElt.style.left = '0'
         }
         else if (winner == 2) {
             actionsContainer.style.borderLeft = '10px solid #c00'
             actionsContainer.style.borderRight = '10px solid #0c0'
-            scoreOutputElt.style.transform = 'scaleX(1.25)'
+            scoreOutputElt.style.transform = 'translateY(35px) scaleX(1.25)'
             computerActionElt.style.right = '0'
         }
         else {
