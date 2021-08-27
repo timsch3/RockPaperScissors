@@ -122,6 +122,27 @@ input[type='submit']:active {
     }
     #scoreOutput {
         font-size: 3rem;
+        transition: 0.5s;
+    }
+    #actionTexts {
+        display: flex;
+        justify-content: space-between;
+        width: 98%;
+        transform: translateY(52px);
+        position: relative;
+        z-index: 10;
+    }
+    .actionText {
+        font-size: 1rem;
+        letter-spacing: -0.75px;
+        font-weight: bold;
+    }
+    #actionTextDraw {
+        color: #fff;
+        font-family: BlueberryCupcake;
+        font-size: 3rem;
+        letter-spacing: 3px;
+        font-weight: 500;
     }
 }
 //---------------------------------------- Finished / restart message
