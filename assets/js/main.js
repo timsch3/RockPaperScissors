@@ -4,6 +4,7 @@ let score = [0, 0]
 let currentRoundOutputElt = document.getElementById('currentRoundOutput')
 let scoreOutputElt = document.getElementById('scoreOutput')
 let winner // 0 = draw  1 = player wins  2 = computer wins
+let gameButtonElts = document.getElementsByClassName('gameButton')
 let actionsContainer = document.getElementById('actionsContainer')
 let playerActionElt = document.getElementById('playerAction')
 let computerActionElt = document.getElementById('computerAction')
@@ -23,6 +24,7 @@ function startGame() {
 function playerAction(elt) {
     if (!alreadyClicked) {
         alreadyClicked = true
+        gameButtonElts[0].style.transform = gameButtonElts[1].style.transform = gameButtonElts[2].style.transform = 'scale(1)'
         // Get user choice and computer random choice and set images accordingly
         let playerChoice
         if (elt.id == 'rockButton') {
@@ -87,69 +89,71 @@ function playerAction(elt) {
         // Call functions to give player feedback about current score and round and to reset stuff
         setTimeout(colorize, 500)
     }
-}
-function colorize() {
-    if (winner == 1) {
-        actionsContainer.style.borderLeft = '10px solid #0c0'
-        actionsContainer.style.borderRight = '10px solid #c00'
-    }
-    else if (winner == 2) {
-        actionsContainer.style.borderLeft = '10px solid #c00'
-        actionsContainer.style.borderRight = '10px solid #0c0'
-    }
-    else {
-        actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #00c'
-    }
-    // Score output: score[player, computer]
-    if (winner == 1) {
-        score[0]++
-    }
-    else if (winner == 2) {
-        score[1]++
-    }
-    scoreOutputElt.innerHTML = `${score[0]} : ${score[1]}`
-    setTimeout(reset, 1500)
-}
-function reset() {
-    // Refresh current round output
-    currentRound++
-    currentRoundOutputElt.innerHTML = `Round ${currentRound} / ${rounds}`
-    // Check if game is finished and display according messages if so
-    if (currentRound > rounds) {
-        document.getElementById('gameWindow').style.display = 'none'
-        document.getElementById('iconsAttribution').style.display = 'none'
-        let messages = document.getElementById('finishedMessages')
-        let msg = document.getElementById('finishedMessage')
-        let msg2 = document.getElementById('finishedMessage2')
-        let msg3 = document.getElementById('finishedMessage3')
-        messages.style.display = 'block'
-        if (rounds == 1) { // Check if only one round was played ("round" / "rounds")
-            msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;round and`
+    function colorize() {
+        if (winner == 1) {
+            actionsContainer.style.borderLeft = '10px solid #0c0'
+            actionsContainer.style.borderRight = '10px solid #c00'
+        }
+        else if (winner == 2) {
+            actionsContainer.style.borderLeft = '10px solid #c00'
+            actionsContainer.style.borderRight = '10px solid #0c0'
         }
         else {
-            msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;rounds and`
+            actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #00c'
         }
-        msg3.innerHTML = `against the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}</strong><br><br><br><form action="index.html"><input type="submit" value="Play again!"></form>`
-        if (score[0] == score[1]) {
-            msg2.innerHTML = 'tied'
-            msg3.innerHTML = `with the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}</strong><br><br><br><form action="index.html"><input type="submit" value="Play again!"></form>`
+        // Score output: score[player, computer]
+        if (winner == 1) {
+            score[0]++
         }
-        else if (score[0] < score[1]) {
-            msg2.innerHTML = 'lost'
+        else if (winner == 2) {
+            score[1]++
         }
-        else if (score[0] > score[1]) {
-            msg2.innerHTML = 'won'
-        }
+        scoreOutputElt.innerHTML = `${score[0]} : ${score[1]}`
+        setTimeout(reset, 1700)
     }
-    // Reset everything for the next round
-    computerActionElt.style.right = '-280px'
-    playerActionElt.style.left = '-280px'
-    actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #000'
-    winner = null
-    playerChoice = null
-    computerChoice = null
-    alreadyClicked = false
+    function reset() {
+        // Refresh current round output
+        currentRound++
+        currentRoundOutputElt.innerHTML = `Round ${currentRound} / ${rounds}`
+        // Check if game is finished and display according messages if so
+        if (currentRound > rounds) {
+            document.getElementById('gameWindow').style.display = 'none'
+            document.getElementById('iconsAttribution').style.display = 'none'
+            let messages = document.getElementById('finishedMessages')
+            let msg = document.getElementById('finishedMessage')
+            let msg2 = document.getElementById('finishedMessage2')
+            let msg3 = document.getElementById('finishedMessage3')
+            messages.style.display = 'block'
+            if (rounds == 1) { // Check if only one round was played ("round" / "rounds")
+                msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;round and`
+            }
+            else {
+                msg.innerHTML = `You played&nbsp;<strong>${rounds}</strong>&nbsp;rounds and`
+            }
+            msg3.innerHTML = `against the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}</strong><br><br><br><form action="index.html"><input type="submit" value="Play again!"></form>`
+            if (score[0] == score[1]) {
+                msg2.innerHTML = 'tied'
+                msg3.innerHTML = `with the computer.<br><br>The final score is <strong>${score[0]} : ${score[1]}</strong><br><br><br><form action="index.html"><input type="submit" value="Play again!"></form>`
+            }
+            else if (score[0] < score[1]) {
+                msg2.innerHTML = 'lost'
+            }
+            else if (score[0] > score[1]) {
+                msg2.innerHTML = 'won'
+            }
+        }
+        // Reset everything for the next round
+        computerActionElt.style.right = '-280px'
+        playerActionElt.style.left = '-280px'
+        actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #000'
+        winner = null
+        playerChoice = null
+        computerChoice = null
+        gameButtonElts[0].style.transform = gameButtonElts[1].style.transform = gameButtonElts[2].style.transform = null
+        alreadyClicked = false
+    }
 }
+
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
