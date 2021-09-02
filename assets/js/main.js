@@ -1,14 +1,14 @@
 let rounds
 let currentRound = 1
+let alreadyClicked = false
 let score = [0, 0]
+let winner // 0 = draw  1 = player wins  2 = computer wins
 let currentRoundOutputElt = document.getElementById('currentRoundOutput')
 let scoreOutputElt = document.getElementById('scoreOutput')
-let winner // 0 = draw  1 = player wins  2 = computer wins
-let gameButtonElts = document.getElementsByClassName('gameButton')
-let actionsContainer = document.getElementById('actionsContainer')
 let playerActionElt = document.getElementById('playerAction')
 let computerActionElt = document.getElementById('computerAction')
-let alreadyClicked = false
+let gameButtonElts = document.getElementsByClassName('gameButton')
+let actionsContainer = document.getElementById('actionsContainer')
 
 function displayChosenRounds() {
     document.getElementById('roundsOutput').innerHTML = rounds = document.getElementById('roundsInput').value
@@ -54,8 +54,8 @@ function playerAction(elt) {
             computerActionElt.style.background = 'url(assets/img/scissors.png) center/cover no-repeat'
         }
         // Set visuals slide in
-        computerActionElt.style.right = '-10px'
-        playerActionElt.style.left = '-10px'
+        computerActionElt.style.right = '-15px'
+        playerActionElt.style.left = '-15px'
         // Detect round winner
         if (playerChoice == computerChoice) {
             winner = 0
@@ -128,21 +128,15 @@ function playerAction(elt) {
             currentRound++
             currentRoundOutputElt.innerHTML = `Round ${currentRound} / ${rounds}`
             // Reset everything for the next round
-            scoreOutputElt.style.transform = null
-            computerActionElt.style.right = '-280px'
-            playerActionElt.style.left = '-280px'
-            actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #000'
             document.getElementById('actionTextDraw').style.color = '#fff'
-            winner = null
-            playerChoice = null
-            computerChoice = null
-            gameButtonElts[0].style.transform = gameButtonElts[1].style.transform = gameButtonElts[2].style.transform = null
+            computerActionElt.style.right = playerActionElt.style.left = '-280px'
+            actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #000'
+            winner = playerChoice = computerChoice = gameButtonElts[0].style.transform = gameButtonElts[1].style.transform = gameButtonElts[2].style.transform = scoreOutputElt.style.transform = null
             alreadyClicked = false
         }
     }
     function finished() {
-        document.getElementById('gameWindow').style.display = 'none'
-        document.getElementById('iconsAttribution').style.display = 'none'
+        document.getElementById('gameWindow').style.display = document.getElementById('iconsAttribution').style.display = 'none'
         let messages = document.getElementById('finishedMessages')
         let msg = document.getElementById('finishedMessage')
         let msg2 = document.getElementById('finishedMessage2')
