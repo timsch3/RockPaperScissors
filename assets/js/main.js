@@ -28,8 +28,8 @@ function playerAction(elt) {
         alreadyClicked = true
         gameButtonElts[0].style.transform = gameButtonElts[1].style.transform = gameButtonElts[2].style.transform = 'scale(1)'
         setAndSlideInImages(elt)
-        detectRoundWinner(elt)
-        setTimeout(colorize, 500) // Call functions chain to give player feedback about current score / round and reset stuff
+        detectRoundWinner()
+        setTimeout(colorizeAndSetScores, 500) // Call functions chain to give player feedback about current score / round and reset stuff
     }
 }
 
@@ -47,7 +47,6 @@ function setAndSlideInImages(elt) {
         playerActionElt.style.background = 'url(assets/img/scissors.png) center/cover no-repeat'
     }
     let rand = getRandomIntInclusive(1, 3)
-    let computerChoice
     if (rand == 1) {
         computerChoice = 'rock'
         computerActionElt.style.background = 'url(assets/img/rock.png) center/cover no-repeat'
@@ -60,8 +59,7 @@ function setAndSlideInImages(elt) {
         computerChoice = 'scissors'
         computerActionElt.style.background = 'url(assets/img/scissors.png) center/cover no-repeat'
     }
-    computerActionElt.style.right = '-15px'
-    playerActionElt.style.left = '-15px'
+    computerActionElt.style.right = playerActionElt.style.left = '-15px'
 }
 
 function detectRoundWinner() {
@@ -96,24 +94,26 @@ function detectRoundWinner() {
     }
 }
 
-function colorize() {
-    if (winner == 1) {
-        actionsContainer.style.borderLeft = '10px solid #0c0'
-        actionsContainer.style.borderRight = '10px solid #c00'
-        scoreOutputElt.style.transform = 'translateY(35px) scaleX(1.25)'
-        playerActionElt.style.left = '0'
-    }
-    else if (winner == 2) {
-        actionsContainer.style.borderLeft = '10px solid #c00'
-        actionsContainer.style.borderRight = '10px solid #0c0'
-        scoreOutputElt.style.transform = 'translateY(35px) scaleX(1.25)'
-        computerActionElt.style.right = '0'
-    }
-    else {
+function colorizeAndSetScores() {
+    if (winner == 0) {
         actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #00c'
         document.getElementById('actionTextDraw').style.color = '#000'
     }
-    // Score output: score[player, computer]
+    else {
+        document.getElementById('actionTextDraw').style.color = '#fff'
+        if (winner == 1) {
+            actionsContainer.style.borderLeft = '10px solid #0c0'
+            actionsContainer.style.borderRight = '10px solid #c00'
+            scoreOutputElt.style.transform = 'translateY(35px) scaleX(1.25)'
+            playerActionElt.style.left = '0'
+        }
+        else if (winner == 2) {
+            actionsContainer.style.borderLeft = '10px solid #c00'
+            actionsContainer.style.borderRight = '10px solid #0c0'
+            scoreOutputElt.style.transform = 'translateY(35px) scaleX(1.25)'
+            computerActionElt.style.right = '0'
+        }
+    }
     if (winner == 1) {
         score[0]++
     }
@@ -121,10 +121,10 @@ function colorize() {
         score[1]++
     }
     scoreOutputElt.innerHTML = `${score[0]} : ${score[1]}`
-    setTimeout(reset, 1800)
+    setTimeout(resetRound, 1800)
 }
 
-function reset() {
+function resetRound() {
     // Check if game is finished and display according messages if so
     if (currentRound == rounds) {
         document.getElementById('actionTextDraw').innerHTML = 'Game Over!'
@@ -136,9 +136,9 @@ function reset() {
         currentRound++
         currentRoundOutputElt.innerHTML = `Round ${currentRound} / ${rounds}`
         // Reset everything for the next round
-        document.getElementById('actionTextDraw').style.color = '#fff'
         computerActionElt.style.right = playerActionElt.style.left = '-280px'
         actionsContainer.style.borderLeft = actionsContainer.style.borderRight = '10px solid #000'
+        document.getElementById('actionTextDraw').style.color = '#fff'
         winner = playerChoice = computerChoice = gameButtonElts[0].style.transform = gameButtonElts[1].style.transform = gameButtonElts[2].style.transform = scoreOutputElt.style.transform = null
         alreadyClicked = false
     }
